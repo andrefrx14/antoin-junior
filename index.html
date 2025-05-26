@@ -1,11 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aniversário do Nicollas Ryan</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+  </head>
+  <body class="bg-gradient-to-br from-purple-600 to-pink-500 min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-3xl w-full bg-white rounded-2xl shadow-2xl p-6 space-y-6">
+      <div class="text-center">
+        <h1 class="text-4xl font-bold text-purple-700">🎉 Feliz Aniversário, Nicollas Ryan! 🎂</h1>
+        <p class="text-lg text-gray-600 mt-2">Vamos comemorar este dia especial com muito amor e alegria!</p>
+      </div>
+
+      <!-- Contador regressivo com Flowbite -->
+      <div class="text-center">
+        <p class="text-sm text-gray-500 mb-2">Contagem regressiva para a festa:</p>
+        <div date-countdown data-countdown-date="2025-06-01T18:00:00" class="text-2xl font-semibold text-pink-600"></div>
+      </div>
+
+      <!-- Galeria de imagens -->
+      <div>
+        <h2 class="text-2xl font-bold text-purple-700 mb-4">Momentos Inesquecíveis 📸</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <img class="rounded-xl shadow-md" src="https://img.freepik.com/vetores-gratis/nuvens-e-baloes-coloridos_23-2147501320.jpg" alt="Balões Coloridos">
+          <img class="rounded-xl shadow-md" src="https://cdn.pixabay.com/photo/2016/11/29/03/53/birthday-1869260_1280.jpg" alt="Crianças com Bolo">
+          <img class="rounded-xl shadow-md" src="https://cdn.pixabay.com/photo/2017/08/06/00/03/birthday-2589815_1280.jpg" alt="Decoração de Festa">
+        </div>
+      </div>
+
+      <!-- Mensagem especial -->
+      <div class="text-center">
+        <h3 class="text-xl font-semibold text-purple-700">Uma Mensagem Especial 💌</h3>
+        <p class="text-gray-700 mt-2">Nicollas, que seu novo ciclo seja repleto de saúde, conquistas e muitos sorrisos. Você é uma pessoa incrível e merece o mundo!</p>
+      </div>
+
+      <!-- Botão para confirmar presença -->
+      <div class="text-center">
+        <button data-modal-target="confirmModal" data-modal-toggle="confirmModal" class="mt-6 bg-pink-600 text-white px-6 py-2 rounded-full hover:bg-pink-700 transition">Confirmar Presença</button>
+      </div>
+    </div>
+
+    <!-- Modal de confirmação -->
+    <div id="confirmModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full inset-0 h-modal h-full justify-center items-center">
+      <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <div class="p-6 text-center">
+            <svg class="mx-auto mb-4 text-green-500 w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Presença confirmada com sucesso! 🎊</h3>
+            <button data-modal-hide="confirmModal" class="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flowbite countdown script -->
+    <script>
+      document.querySelectorAll('[data-countdown-date]').forEach(el => {
+        const targetDate = new Date(el.dataset.countdownDate).getTime();
+        const updateCountdown = () => {
+          const now = new Date().getTime();
+          const distance = targetDate - now;
+          if (distance <= 0) {
+            el.innerHTML = "🎉 A festa começou!";
+            return;
+          }
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          el.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        };
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+      });
+    </script>
+  </body>
 </html>
